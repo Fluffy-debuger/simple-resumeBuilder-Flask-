@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Template</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: 1px solid #ccc;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.email {
+  font-size: 16px;
+}
+
+.degree {
+  font-size: 14px;
+}
+
+.university {
+  font-size: 14px;
+}
+
+.yrs {
+  font-size: 14px;
+}
+
+.skills {
+  font-size: 14px;
+}
+
+.exp {
+  font-size: 14px;
+}
+
+.phno {
+  font-size: 14px;
+}
+
+.download-button {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .download-button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-button a:hover {
+      background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1 class="name">{{name}}</h1>
+    <h2 class="email">{{email}}</h2>
+  </div>
+  <div class="education">
+    <h3 class="degree">{{degree}}</h3>
+    <h4 class="university">{{university}}</h4>
+    <h5 class="yrs">{{yrs}}</h5>
+  </div>
+  <div class="skills">
+    <h3>Skills</h3>
+    <ul>
+      {%for skill in skills%} 
+      <li>{{skill}}</li>
+      {%endfor%}
+    </ul>
+  </div>
+  <div class="experience">
+    <h3>Experience</h3>
+    <ul>
+      <li>{{exp}}</li>
+    </ul>
+  </div>
+  <div class="contact">
+    <h3>Contact</h3>
+    <h4>Phone: {{phno}}</h4>
+    <h4>Email: {{email}}</h4>
+  </div>
+</div>
+<div class="download-button">
+  <a href="#" onclick="downloadResume()">Download as PDF</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
+<script>
+  function downloadResume() {
+    const resume = document.querySelector('.container');
+
+    html2pdf().from(resume).save('resume.pdf');
+  }
+</script>
+</body>
+</html>

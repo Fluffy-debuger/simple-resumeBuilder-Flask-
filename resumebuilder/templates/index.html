@@ -54,7 +54,7 @@
 
             <div class="col-md-4">
               <label for="text" class="form-label">Phone no.</label>
-              <input type="tel" class="form-control" name="Phone no" value="" id="inputPassword4" maxlength="10">
+              <input type="tel" class="form-control" name="phno" value="" id="inputPassword4" maxlength="10">
             </div>
 
             <div class="col-md-4">
@@ -165,8 +165,14 @@
                 </label>
               </div>
             </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary"><a href="{{url_for('result')}}" style="text-decoration: none; color: #f6f0f0;">Next</a></button>
+            <label class="form-label">Select template</label><br>
+            <div class="input-group mb-3">
+              <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="downopts">
+                <option  value="simple">Simple</option>
+                <option  value="creative">Creative</option>
+                <option  value="pro">Professional</option>
+              </select>
+              <button class="btn btn-outline-secondary" type="submit">Next</button>
             </div>
           </form>
     </div>

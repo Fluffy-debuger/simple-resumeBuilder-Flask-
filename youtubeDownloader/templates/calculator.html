@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resume</title>
+  <style>
+    /* Resume styles */
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <!-- Resume content -->
+    
+    <a href="#" class="download-button" onclick="downloadResume()">Download as PDF</a>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
+    <script>
+      function downloadResume() {
+        const resume = document.querySelector('.resume');
+        const pdf = new jsPDF();
+        
+        // Convert resume div to canvas
+        html2canvas(resume).then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          
+          // Add image to the PDF
+          pdf.addImage(imgData, 'PNG', 10, 10, 0, 0);
+          
+          // Add text content using AutoTable plugin
+          const content = [{ text: 'Your Name' }, { text: 'Email: your_email@example.com' }, { text: 'Degree: Your Degree' }, { text: 'University: Your University' }, { text: 'Years: Years of Study' }, { text: 'Skills: Your Skills' }, { text: 'Experience: Your Experience' }];
+          pdf.autoTable({ startY: 120, body: content });
+          
+          // Save the PDF
+          pdf.save('resume.pdf');
+        });
+      }
+    </script>
+  </div>
+</body>
+</html>
